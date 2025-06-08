@@ -1,0 +1,22 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04-arm
+    container: swift:latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: swift build --build-tests
+    - run: swift test --skip-build --parallel
+      env:
+        ORGANIZATION_ID: ${{ secrets.ORGANIZATION_ID }}
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+  lint:
+    runs-on: ubuntu-24.04-arm
+    container: swift:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift format lint -r -p -s .
