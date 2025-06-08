@@ -1,0 +1,24 @@
+{
+  "originHash" : "548f24025b0559d93b223d1da400b3d6b10765d88a2da01b19cd72577f5d1afc",
+  "pins" : [
+    {
+      "identity" : "http-client",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zunda-pixel/http-client.git",
+      "state" : {
+        "revision" : "2a073b058e4c2ffc2810373ac98dc2eeb5974e5e",
+        "version" : "0.3.1"
+      }
+    },
+    {
+      "identity" : "swift-http-types",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-http-types",
+      "state" : {
+        "revision" : "a0a57e949a8903563aba4615869310c0ebf14c03",
+        "version" : "1.4.0"
+      }
+    }
+  ],
+  "version" : 3
+}
