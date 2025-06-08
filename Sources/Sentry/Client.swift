@@ -8,11 +8,14 @@ import HTTPTypesFoundation
 #endif
 
 public struct Client<HTTPClient: HTTPClientProtocol> {
-  var apiToken: String
-  var organizationId: String
-  var projectId: String
-  var httpClient: HTTPClient
-  var baseUrl: URL {
+  public var organizationId: String
+  public var projectId: String
+  public var apiToken: String
+  public var clientName: String = "sentry.cocoa/8.52.1"
+  public var version: Int = 7
+  public var httpClient: HTTPClient
+  
+  public var baseUrl: URL {
     URL(string: "https://o\(organizationId).ingest.us.sentry.io/api/\(projectId)")!
   }
   
