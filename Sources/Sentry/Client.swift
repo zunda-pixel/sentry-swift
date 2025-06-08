@@ -14,11 +14,11 @@ public struct Client<HTTPClient: HTTPClientProtocol> {
   public var clientName: String = "sentry.cocoa/8.52.1"
   public var version: Int = 7
   public var httpClient: HTTPClient
-  
+
   public var baseUrl: URL {
     URL(string: "https://o\(organizationId).ingest.us.sentry.io/api/\(projectId)")!
   }
-  
+
   public init(
     organizationId: String,
     projectId: String,
@@ -30,18 +30,19 @@ public struct Client<HTTPClient: HTTPClientProtocol> {
     self.apiToken = apiToken
     self.httpClient = httpClient
   }
-  
+
   public init?(
     dns: URL,
     httpClient: HTTPClient
   ) {
     guard var organizationId = dns.host()?.components(separatedBy: ".").first,
-          let apiToken = dns.user() else {
+      let apiToken = dns.user()
+    else {
       return nil
     }
 
-    organizationId.removeFirst() // remove "o" at first
-    
+    organizationId.removeFirst()  // remove "o" at first
+
     self.init(
       organizationId: organizationId,
       projectId: dns.lastPathComponent,
@@ -51,4 +52,4 @@ public struct Client<HTTPClient: HTTPClientProtocol> {
   }
 }
 
-extension Client: Sendable where HTTPClient: Sendable { }
+extension Client: Sendable where HTTPClient: Sendable {}

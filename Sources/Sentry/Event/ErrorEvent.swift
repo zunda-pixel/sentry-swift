@@ -10,12 +10,12 @@ struct ErrorEvent: Codable, Hashable, Sendable {
   var attributes: Attributes
   var timestamp: Date
   var sequence: Int
-  
+
   struct Attributes: Codable, Hashable, Sendable {
     var release: String
     var environment: String
   }
-  
+
   enum CodingKeys: String, CodingKey {
     case errors
     case status
@@ -27,20 +27,26 @@ struct ErrorEvent: Codable, Hashable, Sendable {
     case timestamp
     case sequence = "seq"
   }
-  
+
   init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.errors = try container.decode(Int.self, forKey: .errors)
     self.status = try container.decode(String.self, forKey: .status)
-    self.started = try Date(container.decode(String.self, forKey: .started), strategy: .iso8601WithFractionSeconds)
+    self.started = try Date(
+      container.decode(String.self, forKey: .started),
+      strategy: .iso8601WithFractionSeconds
+    )
     self.did = try container.decode(UUID.self, forKey: .did)
     self.duration = try container.decode(TimeInterval.self, forKey: .duration)
     self.sid = try container.decode(UUID.self, forKey: .sid)
     self.attributes = try container.decode(ErrorEvent.Attributes.self, forKey: .attributes)
-    self.timestamp = try Date(container.decode(String.self, forKey: .timestamp), strategy: .iso8601WithFractionSeconds)
+    self.timestamp = try Date(
+      container.decode(String.self, forKey: .timestamp),
+      strategy: .iso8601WithFractionSeconds
+    )
     self.sequence = try container.decode(Int.self, forKey: .sequence)
   }
-  
+
   func encode(to encoder: any Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(self.errors, forKey: .errors)

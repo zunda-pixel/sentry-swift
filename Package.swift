@@ -16,11 +16,11 @@ let package = Package(
     .library(
       name: "Sentry",
       targets: ["Sentry"]
-    ),
+    )
   ],
   dependencies: [
     .package(url: "https://github.com/zunda-pixel/http-client.git", from: "0.3.1"),
-    .package(url: "https://github.com/apple/swift-http-types.git", from: "1.4.0")
+    .package(url: "https://github.com/apple/swift-http-types.git", from: "1.4.0"),
   ],
   targets: [
     .target(
