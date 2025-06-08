@@ -1,6 +1,11 @@
 import Foundation
 
-struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
+
+struct Empty: Codable & Sendable & Hashable {
+  
+}
+
+struct LogEvent<MechanismData: Codable & Sendable & Hashable, MechanismMeta: Codable & Sendable & Hashable>: Codable {
   var eventId: String
   var environment: String
   var level: String
@@ -37,36 +42,36 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
     case debugMeta = "debug_meta"
   }
   
-  struct User: Codable {
+  struct User: Codable, Hashable, Sendable {
     var id: UUID
   }
   
-  struct Extra: Codable {
+  struct Extra: Codable, Hashable, Sendable {
     
   }
   
-  struct Exceptions: Codable {
+  struct Exceptions: Codable, Hashable, Sendable {
     var values: [Exception]
   }
   
-  struct Exception: Codable {
+  struct Exception: Codable, Hashable, Sendable {
     var value: String
     var type: String
-    var mechanism: Mechanism<MechanismData, MechanismMeta>
+    var mechanism: Mechanism
     
-    struct Mechanism<Data: Codable, Meta: Codable>: Codable {
-      var data: Data
-      var meta: Meta
+    struct Mechanism: Codable, Hashable, Sendable {
+      var data: MechanismData
+      var meta: MechanismMeta
       var type: String
       var description: String
     }
   }
   
-  struct Tags: Codable {
+  struct Tags: Codable, Hashable, Sendable {
     
   }
   
-  struct Breadcrumb: Codable {
+  struct Breadcrumb: Codable, Hashable, Sendable {
     var timestamp: Date
     var level: String
     var type: String
@@ -104,10 +109,10 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
     }
   }
   
-  struct Threads: Codable {
+  struct Threads: Codable, Hashable, Sendable {
     var values: [Thread]
     
-    struct Thread: Codable {
+    struct Thread: Codable, Hashable, Sendable {
       var id: Int
       var current: Bool
       var crashed: Bool
@@ -115,10 +120,10 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
       var name: String?
       var stasktrace: Stacktrace?
       
-      struct Stacktrace: Codable {
+      struct Stacktrace: Codable, Hashable, Sendable {
         var frames: [Frame]
         
-        struct Frame: Codable {
+        struct Frame: Codable, Hashable, Sendable {
           var package: String
           var symbolAddress: String
           var imageAddress: String
@@ -139,14 +144,14 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
     }
   }
   
-  struct Contexts: Codable {
+  struct Contexts: Codable, Hashable, Sendable {
     var app: App
     var os: OS
     var device: Device
     var trace: Trace
     var culture: Culture
     
-    struct App: Codable {
+    struct App: Codable, Hashable, Sendable {
       var appName: String
       var buildType: String
       var appVersion: String
@@ -204,7 +209,7 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
       }
     }
     
-    struct OS: Codable {
+    struct OS: Codable, Hashable, Sendable {
       var name: String
       var version: String
       var rooted: Bool
@@ -220,7 +225,7 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
       }
     }
     
-    struct Device: Codable {
+    struct Device: Codable, Hashable, Sendable {
       var model: String
       var modelId: String
       var family: String
@@ -254,7 +259,7 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
       }
     }
     
-    struct Trace: Codable {
+    struct Trace: Codable, Hashable, Sendable {
       var spanId: String
       var traceId: String
       
@@ -264,7 +269,7 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
       }
     }
     
-    struct Culture: Codable {
+    struct Culture: Codable, Hashable, Sendable {
       var locale: String
       var timezone: String
       var displayName: String
@@ -281,10 +286,10 @@ struct LogEvent<MechanismData: Codable, MechanismMeta: Codable>: Codable {
     }
   }
   
-  struct DebugMeta: Codable {
+  struct DebugMeta: Codable, Hashable, Sendable {
     var images: [Image]
     
-    struct Image: Codable {
+    struct Image: Codable, Hashable, Sendable {
       var debugId: String
       var imageAddress: String
       var type: String

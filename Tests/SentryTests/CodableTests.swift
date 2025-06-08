@@ -35,7 +35,3 @@ struct CodableTests {
     print(event1, event2)
   }
 }
-
-struct Empty: Codable {
-  
-}
