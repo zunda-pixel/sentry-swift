@@ -29,11 +29,11 @@ struct CodableTests {
     let url = Bundle.module.url(forResource: "LogEvent", withExtension: "json")!
     let data = try Data(contentsOf: url)
 
-    struct Empty: Codable & Sendable & Hashable {}
-
     let event1 = try JSONDecoder().decode(LogEvent<Empty, Empty>.self, from: data)
     let encodedData = try JSONEncoder().encode(event1)
     let event2 = try JSONDecoder().decode(LogEvent<Empty, Empty>.self, from: encodedData)
     print(event1, event2)
   }
 }
+
+struct Empty: Codable & Sendable & Hashable {}
