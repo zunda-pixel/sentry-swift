@@ -37,9 +37,9 @@ extension Client {
       ],
     ].flatMap { $0 }
 
-    let bodyData = datas.map { String(decoding: $0, as: UTF8.self) }
+    let bodyDatas = datas.map { String(decoding: $0, as: UTF8.self) }
 
-    let gzippedBodyData = try Data(bodyData.joined(separator: "\n").utf8).gzipped()
+    let gzippedBodyData = try Data(bodyDatas.joined(separator: "\n").utf8).gzipped()
 
     let request = HTTPRequest(
       method: .post,
@@ -62,13 +62,19 @@ extension Client {
       ]
     )
 
-    let (data, _) = try await httpClient.execute(
+    let (data, response) = try await httpClient.execute(
       for: request,
       from: gzippedBodyData
     )
 
-    let response = try JSONDecoder().decode(Response.self, from: data)
-    return response.id
+    if let response = try? JSONDecoder().decode(Response.self, from: data) {
+      return response.id
+    } else {
+      throw RequestError(
+        data: data,
+        response: response
+      )
+    }
   }
 }
 
@@ -79,4 +85,9 @@ struct Response: Codable {
 struct DataLabel: Codable {
   var type: String
   var length: Int
+}
+
+public struct RequestError: Error {
+  public var data: Data
+  public var response: HTTPResponse
 }
