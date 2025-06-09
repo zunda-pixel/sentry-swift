@@ -1,27 +1,63 @@
 import Foundation
 
-struct LogEvent<
+public struct LogEvent<
   MechanismData: Codable & Sendable & Hashable,
   MechanismMeta: Codable & Sendable & Hashable
 >: Codable {
-  var eventId: String
-  var environment: String
-  var level: String
-  var platform: String
-  var timestamp: Date
-  var release: String
-  var dist: String
-  var user: User
-  var extra: Extra
-  var exception: Exceptions
-  var tags: Tags
-  var breadcrumbs: [Breadcrumb]
-  var threads: Threads
-  var contexts: Contexts
-  var sdk: SDK
-  var debugMeta: DebugMeta
+  public var eventId: String
+  public var environment: String
+  public var level: String
+  public var platform: String
+  public var timestamp: Date
+  public var release: String
+  public var dist: String
+  public var user: User
+  public var extra: Extra
+  public var exception: Exceptions
+  public var tags: Tags
+  public var breadcrumbs: [Breadcrumb]
+  public var threads: Threads
+  public var contexts: Contexts
+  public var sdk: SDK
+  public var debugMeta: DebugMeta
 
-  enum CodingKeys: String, CodingKey {
+  public init(
+    eventId: String,
+    environment: String,
+    level: String,
+    platform: String,
+    timestamp: Date,
+    release: String,
+    dist: String,
+    user: User,
+    extra: Extra,
+    exception: Exceptions,
+    tags: Tags,
+    breadcrumbs: [Breadcrumb],
+    threads: Threads,
+    contexts: Contexts,
+    sdk: SDK,
+    debugMeta: DebugMeta
+  ) {
+    self.eventId = eventId
+    self.environment = environment
+    self.level = level
+    self.platform = platform
+    self.timestamp = timestamp
+    self.release = release
+    self.dist = dist
+    self.user = user
+    self.extra = extra
+    self.exception = exception
+    self.tags = tags
+    self.breadcrumbs = breadcrumbs
+    self.threads = threads
+    self.contexts = contexts
+    self.sdk = sdk
+    self.debugMeta = debugMeta
+  }
+
+  private enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case environment
     case level
@@ -40,44 +76,90 @@ struct LogEvent<
     case debugMeta = "debug_meta"
   }
 
-  struct User: Codable, Hashable, Sendable {
-    var id: UUID
-  }
+  public struct User: Codable, Hashable, Sendable {
+    public var id: UUID
 
-  struct Extra: Codable, Hashable, Sendable {
-
-  }
-
-  struct Exceptions: Codable, Hashable, Sendable {
-    var values: [Exception]
-  }
-
-  struct Exception: Codable, Hashable, Sendable {
-    var value: String
-    var type: String
-    var mechanism: Mechanism
-
-    struct Mechanism: Codable, Hashable, Sendable {
-      var data: MechanismData
-      var meta: MechanismMeta
-      var type: String
-      var description: String
+    public init(id: UUID) {
+      self.id = id
     }
   }
 
-  struct Tags: Codable, Hashable, Sendable {
-
+  public struct Extra: Codable, Hashable, Sendable {
+    public init() {}
   }
 
-  struct Breadcrumb: Codable, Hashable, Sendable {
-    var timestamp: Date
-    var level: String
-    var type: String
-    var category: String
-    var message: String?
-    var data: [String: String]?
+  public struct Exceptions: Codable, Hashable, Sendable {
+    public var values: [Exception]
 
-    enum CodingKeys: CodingKey {
+    public init(values: [Exception]) {
+      self.values = values
+    }
+  }
+
+  public struct Exception: Codable, Hashable, Sendable {
+    public var value: String
+    public var type: String
+    public var mechanism: Mechanism
+
+    public init(
+      value: String,
+      type: String,
+      mechanism: Mechanism
+    ) {
+      self.value = value
+      self.type = type
+      self.mechanism = mechanism
+    }
+
+    public struct Mechanism: Codable, Hashable, Sendable {
+      public var data: MechanismData
+      public var meta: MechanismMeta
+      public var type: String
+      public var description: String
+
+      public init(
+        data: MechanismData,
+        meta: MechanismMeta,
+        type: String,
+        description: String
+      ) {
+        self.data = data
+        self.meta = meta
+        self.type = type
+        self.description = description
+      }
+    }
+  }
+
+  public struct Tags: Codable, Hashable, Sendable {
+    public init() {}
+  }
+
+  public struct Breadcrumb: Codable, Hashable, Sendable {
+    public var timestamp: Date
+    public var level: String
+    public var type: String
+    public var category: String
+    public var message: String?
+    public var data: [String: String]?
+
+    public init(
+      timestamp: Date,
+      level: String,
+      type: String,
+      category: String,
+      message: String? = nil,
+      data: [String: String]? = nil
+    ) {
+      self.timestamp = timestamp
+      self.level = level
+      self.type = type
+      self.category = category
+      self.message = message
+      self.data = data
+    }
+
+    private enum CodingKeys: CodingKey {
       case message
       case timestamp
       case level
@@ -86,7 +168,7 @@ struct LogEvent<
       case data
     }
 
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       self.message = try container.decodeIfPresent(String.self, forKey: .message)
       self.timestamp = try Date(
@@ -99,7 +181,7 @@ struct LogEvent<
       self.data = try container.decodeIfPresent([String: String].self, forKey: .data)
     }
 
-    func encode(to encoder: any Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
       var container = encoder.container(keyedBy: CodingKeys.self)
       try container.encode(
         self.timestamp.formatted(.iso8601WithFractionSeconds),
@@ -113,62 +195,142 @@ struct LogEvent<
     }
   }
 
-  struct Threads: Codable, Hashable, Sendable {
-    var values: [Thread]
+  public struct Threads: Codable, Hashable, Sendable {
+    public var values: [Thread]
 
-    struct Thread: Codable, Hashable, Sendable {
-      var id: Int
-      var current: Bool
-      var crashed: Bool
-      var main: Bool
-      var name: String?
-      var stasktrace: Stacktrace?
+    public init(values: [Thread]) {
+      self.values = values
+    }
+  }
 
-      struct Stacktrace: Codable, Hashable, Sendable {
-        var frames: [Frame]
+  public struct Thread: Codable, Hashable, Sendable {
+    public var id: Int
+    public var current: Bool
+    public var crashed: Bool
+    public var main: Bool
+    public var name: String?
+    public var stasktrace: Stacktrace?
 
-        struct Frame: Codable, Hashable, Sendable {
-          var package: String
-          var symbolAddress: String
-          var imageAddress: String
-          var function: String
-          var instructionAddres: String
-          var inApp: Bool
+    public init(
+      id: Int,
+      current: Bool,
+      crashed: Bool,
+      main: Bool,
+      name: String? = nil,
+      stasktrace: Stacktrace? = nil
+    ) {
+      self.id = id
+      self.current = current
+      self.crashed = crashed
+      self.main = main
+      self.name = name
+      self.stasktrace = stasktrace
+    }
 
-          enum CodingKeys: String, CodingKey {
-            case package
-            case symbolAddress = "symbol_addr"
-            case imageAddress = "image_addr"
-            case function
-            case instructionAddres = "instruction_addr"
-            case inApp = "in_app"
-          }
+    public struct Stacktrace: Codable, Hashable, Sendable {
+      public var frames: [Frame]
+
+      public init(frames: [Frame]) {
+        self.frames = frames
+      }
+
+      public struct Frame: Codable, Hashable, Sendable {
+        public var package: String
+        public var symbolAddress: String
+        public var imageAddress: String
+        public var function: String
+        public var instructionAddres: String
+        public var inApp: Bool
+
+        public init(
+          package: String,
+          symbolAddress: String,
+          imageAddress: String,
+          function: String,
+          instructionAddres: String,
+          inApp: Bool
+        ) {
+          self.package = package
+          self.symbolAddress = symbolAddress
+          self.imageAddress = imageAddress
+          self.function = function
+          self.instructionAddres = instructionAddres
+          self.inApp = inApp
+        }
+
+        private enum CodingKeys: String, CodingKey {
+          case package
+          case symbolAddress = "symbol_addr"
+          case imageAddress = "image_addr"
+          case function
+          case instructionAddres = "instruction_addr"
+          case inApp = "in_app"
         }
       }
     }
   }
 
-  struct Contexts: Codable, Hashable, Sendable {
-    var app: App
-    var os: OS
-    var device: Device
-    var trace: Trace
-    var culture: Culture
+  public struct Contexts: Codable, Hashable, Sendable {
+    public var app: App
+    public var os: OS
+    public var device: Device
+    public var trace: Trace
+    public var culture: Culture
 
-    struct App: Codable, Hashable, Sendable {
-      var appName: String
-      var buildType: String
-      var appVersion: String
-      var appIdentifier: String
-      var appStartTime: Date
-      var appId: String
-      var deviceAppHash: String
-      var inForeground: Bool
-      var appBuild: String
-      var appMemory: Int
-      var viewNames: [String]
+    public init(
+      app: App,
+      os: OS,
+      device: Device,
+      trace: Trace,
+      culture: Culture
+    ) {
+      self.app = app
+      self.os = os
+      self.device = device
+      self.trace = trace
+      self.culture = culture
+    }
 
-      enum CodingKeys: String, CodingKey {
+    public struct App: Codable, Hashable, Sendable {
+      public var appName: String
+      public var buildType: String
+      public var appVersion: String
+      public var appIdentifier: String
+      public var appStartTime: Date
+      public var appId: String
+      public var deviceAppHash: String
+      public var inForeground: Bool
+      public var appBuild: String
+      public var appMemory: Int
+      public var viewNames: [String]
+
+      public init(
+        appName: String,
+        buildType: String,
+        appVersion: String,
+        appIdentifier: String,
+        appStartTime: Date,
+        appId: String,
+        deviceAppHash: String,
+        inForeground: Bool,
+        appBuild: String,
+        appMemory: Int,
+        viewNames: [String]
+      ) {
+        self.appName = appName
+        self.buildType = buildType
+        self.appVersion = appVersion
+        self.appIdentifier = appIdentifier
+        self.appStartTime = appStartTime
+        self.appId = appId
+        self.deviceAppHash = deviceAppHash
+        self.inForeground = inForeground
+        self.appBuild = appBuild
+        self.appMemory = appMemory
+        self.viewNames = viewNames
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case appName = "app_name"
         case buildType = "build_type"
         case appVersion = "app_version"
@@ -182,7 +344,7 @@ struct LogEvent<
         case viewNames = "view_names"
       }
 
-      init(from decoder: any Decoder) throws {
+      public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.appName = try container.decode(String.self, forKey: .appName)
         self.buildType = try container.decode(String.self, forKey: .buildType)
@@ -200,7 +362,7 @@ struct LogEvent<
         self.viewNames = try container.decode([String].self, forKey: .viewNames)
       }
 
-      func encode(to encoder: any Encoder) throws {
+      public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.appName, forKey: .appName)
         try container.encode(self.buildType, forKey: .buildType)
@@ -216,14 +378,28 @@ struct LogEvent<
       }
     }
 
-    struct OS: Codable, Hashable, Sendable {
-      var name: String
-      var version: String
-      var rooted: Bool
-      var kernelVersion: String
-      var build: String
+    public struct OS: Codable, Hashable, Sendable {
+      public var name: String
+      public var version: String
+      public var rooted: Bool
+      public var kernelVersion: String
+      public var build: String
 
-      enum CodingKeys: String, CodingKey {
+      public init(
+        name: String,
+        version: String,
+        rooted: Bool,
+        kernelVersion: String,
+        build: String
+      ) {
+        self.name = name
+        self.version = version
+        self.rooted = rooted
+        self.kernelVersion = kernelVersion
+        self.build = build
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case name
         case version
         case rooted
@@ -232,23 +408,55 @@ struct LogEvent<
       }
     }
 
-    struct Device: Codable, Hashable, Sendable {
-      var model: String
-      var modelId: String
-      var family: String
-      var arch: String
-      var orientation: String
-      var thermalState: String
-      var simulator: Bool
-      var batteryLevel: Int
-      var locale: String
-      var charging: Bool
-      var processorCount: Int
-      var memorySize: Int
-      var usableMemory: Int
-      var freeMemory: Int
+    public struct Device: Codable, Hashable, Sendable {
+      public var model: String
+      public var modelId: String
+      public var family: String
+      public var arch: String
+      public var orientation: String
+      public var thermalState: String
+      public var simulator: Bool
+      public var batteryLevel: Int
+      public var locale: String
+      public var charging: Bool
+      public var processorCount: Int
+      public var memorySize: Int
+      public var usableMemory: Int
+      public var freeMemory: Int
 
-      enum CodingKeys: String, CodingKey {
+      public init(
+        model: String,
+        modelId: String,
+        family: String,
+        arch: String,
+        orientation: String,
+        thermalState: String,
+        simulator: Bool,
+        batteryLevel: Int,
+        locale: String,
+        charging: Bool,
+        processorCount: Int,
+        memorySize: Int,
+        usableMemory: Int,
+        freeMemory: Int
+      ) {
+        self.model = model
+        self.modelId = modelId
+        self.family = family
+        self.arch = arch
+        self.orientation = orientation
+        self.thermalState = thermalState
+        self.simulator = simulator
+        self.batteryLevel = batteryLevel
+        self.locale = locale
+        self.charging = charging
+        self.processorCount = processorCount
+        self.memorySize = memorySize
+        self.usableMemory = usableMemory
+        self.freeMemory = freeMemory
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case model
         case modelId = "model_id"
         case family
@@ -266,24 +474,46 @@ struct LogEvent<
       }
     }
 
-    struct Trace: Codable, Hashable, Sendable {
-      var spanId: String
-      var traceId: String
+    public struct Trace: Codable, Hashable, Sendable {
+      public var spanId: String
+      public var traceId: String
 
-      enum CodingKeys: String, CodingKey {
+      public init(
+        spanId: String,
+        traceId: String
+      ) {
+        self.spanId = spanId
+        self.traceId = traceId
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case spanId = "span_id"
         case traceId = "trace_id"
       }
     }
 
-    struct Culture: Codable, Hashable, Sendable {
-      var locale: String
-      var timezone: String
-      var displayName: String
-      var calendar: String
-      var is24HourFormat: Bool
+    public struct Culture: Codable, Hashable, Sendable {
+      public var locale: String
+      public var timezone: String
+      public var displayName: String
+      public var calendar: String
+      public var is24HourFormat: Bool
 
-      enum CodingKeys: String, CodingKey {
+      public init(
+        locale: String,
+        timezone: String,
+        displayName: String,
+        calendar: String,
+        is24HourFormat: Bool
+      ) {
+        self.locale = locale
+        self.timezone = timezone
+        self.displayName = displayName
+        self.calendar = calendar
+        self.is24HourFormat = is24HourFormat
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case locale
         case timezone
         case displayName = "display_name"
@@ -293,17 +523,35 @@ struct LogEvent<
     }
   }
 
-  struct DebugMeta: Codable, Hashable, Sendable {
-    var images: [Image]
+  public struct DebugMeta: Codable, Hashable, Sendable {
+    public var images: [Image]
 
-    struct Image: Codable, Hashable, Sendable {
-      var debugId: String
-      var imageAddress: String
-      var type: String
-      var imageSize: Int
-      var codeFile: String
+    init(images: [Image]) {
+      self.images = images
+    }
 
-      enum CodingKeys: String, CodingKey {
+    public struct Image: Codable, Hashable, Sendable {
+      public var debugId: String
+      public var imageAddress: String
+      public var type: String
+      public var imageSize: Int
+      public var codeFile: String
+
+      public init(
+        debugId: String,
+        imageAddress: String,
+        type: String,
+        imageSize: Int,
+        codeFile: String
+      ) {
+        self.debugId = debugId
+        self.imageAddress = imageAddress
+        self.type = type
+        self.imageSize = imageSize
+        self.codeFile = codeFile
+      }
+
+      private enum CodingKeys: String, CodingKey {
         case debugId = "debug_id"
         case imageAddress = "image_addr"
         case type

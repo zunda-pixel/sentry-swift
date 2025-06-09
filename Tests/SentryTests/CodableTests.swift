@@ -1,7 +1,6 @@
 import Foundation
+import Sentry
 import Testing
-
-@testable import Sentry
 
 @Suite
 struct CodableTests {

@@ -1,22 +1,52 @@
 import Foundation
 
-struct ErrorEvent: Codable, Hashable, Sendable {
-  var errors: Int
-  var status: String
-  var started: Date
-  var did: UUID
-  var duration: TimeInterval
-  var sid: UUID
-  var attributes: Attributes
-  var timestamp: Date
-  var sequence: Int
+public struct ErrorEvent: Codable, Hashable, Sendable {
+  public var errors: Int
+  public var status: String
+  public var started: Date
+  public var did: UUID
+  public var duration: TimeInterval
+  public var sid: UUID
+  public var attributes: Attributes
+  public var timestamp: Date
+  public var sequence: Int
 
-  struct Attributes: Codable, Hashable, Sendable {
-    var release: String
-    var environment: String
+  public init(
+    errors: Int,
+    status: String,
+    started: Date,
+    did: UUID,
+    duration: TimeInterval,
+    sid: UUID,
+    attributes: Attributes,
+    timestamp: Date,
+    sequence: Int
+  ) {
+    self.errors = errors
+    self.status = status
+    self.started = started
+    self.did = did
+    self.duration = duration
+    self.sid = sid
+    self.attributes = attributes
+    self.timestamp = timestamp
+    self.sequence = sequence
   }
 
-  enum CodingKeys: String, CodingKey {
+  public struct Attributes: Codable, Hashable, Sendable {
+    public var release: String
+    public var environment: String
+
+    public init(
+      release: String,
+      environment: String
+    ) {
+      self.release = release
+      self.environment = environment
+    }
+  }
+
+  private enum CodingKeys: String, CodingKey {
     case errors
     case status
     case started
@@ -28,7 +58,7 @@ struct ErrorEvent: Codable, Hashable, Sendable {
     case sequence = "seq"
   }
 
-  init(from decoder: any Decoder) throws {
+  public init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.errors = try container.decode(Int.self, forKey: .errors)
     self.status = try container.decode(String.self, forKey: .status)
@@ -47,7 +77,7 @@ struct ErrorEvent: Codable, Hashable, Sendable {
     self.sequence = try container.decode(Int.self, forKey: .sequence)
   }
 
-  func encode(to encoder: any Encoder) throws {
+  public func encode(to encoder: any Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(self.errors, forKey: .errors)
     try container.encode(self.status, forKey: .status)
