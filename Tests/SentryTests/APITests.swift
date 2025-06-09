@@ -173,16 +173,10 @@ struct APITests {
       sequence: 3
     )
 
-    do {
-      try await client.postLog(
-        event: event,
-        log: log,
-        error: error
-      )
-    } catch let error as RequestError {
-      print(String(decoding: error.data, as: UTF8.self))
-      print(error.response)
-      throw error
-    }
+    try await client.postLog(
+      event: event,
+      log: log,
+      error: error
+    )
   }
 }
