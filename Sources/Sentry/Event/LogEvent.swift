@@ -526,7 +526,7 @@ public struct LogEvent<
   public struct DebugMeta: Codable, Hashable, Sendable {
     public var images: [Image]
 
-    init(images: [Image]) {
+    public init(images: [Image]) {
       self.images = images
     }
 
