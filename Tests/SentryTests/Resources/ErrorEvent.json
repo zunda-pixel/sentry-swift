@@ -1,0 +1,14 @@
+{
+  "errors": 2,
+  "status": "ok",
+  "started": "2025-06-08T08:25:18.138Z",
+  "did": "1E57865E-1ABD-4A9D-8ABE-212A0A087CF3",
+  "duration": 0,
+  "sid": "91736857-E231-4B85-9F66-B1A688E5DA42",
+  "attrs": {
+    "release": "com.zunda.TestSentry@1.0+1",
+    "environment": "production"
+  },
+  "timestamp": "2025-06-08T08:25:45.752Z",
+  "seq": 3
+}

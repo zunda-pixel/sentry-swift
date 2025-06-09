@@ -1,0 +1,32 @@
+{
+  "event_id": "6c763ad906c0480d8c3fb8b8a8a1ae42",
+  "sent_at": "2025-06-08T08:25:45.754Z",
+  "trace": {
+    "trace_id": "7e85db6fb5104e0aaa746e2fffcf2b13",
+    "public_key": "cb3a55de3555bc034555ba8d5fb55579",
+    "release": "com.zunda.TestSentry@1.0+1",
+    "environment": "production"
+  },
+  "sdk": {
+    "name": "sentry.cocoa",
+    "version": "8.52.1",
+    "packages": [
+      {
+        "name": "carthage:getsentry/sentry.cocoa",
+        "version": "8.52.1"
+      }
+    ],
+    "features": [
+      "dataSwizzling",
+      "captureFailedRequests",
+      "experimentalViewRenderer"
+    ],
+    "integrations": [
+      "AutoSessionTracking",
+      "NetworkTracking",
+      "WatchdogTerminationTracking",
+      "Crash",
+      "AutoBreadcrumbTracking"
+    ]
+  }
+}

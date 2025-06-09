@@ -1,0 +1,767 @@
+{
+  "event_id": "6c763ad906c0480d8c3fb8b8a8a1ae42",
+  "environment": "production",
+  "level": "error",
+  "platform": "cocoa",
+  "timestamp": 1749371145.728675,
+  "release": "com.zunda.TestSentry@1.0+1",
+  "dist": "1",
+  "user": {
+    "id": "1E57865E-1ABD-4A9D-8ABE-212A0A087CF3"
+  },
+  "extra": {},
+  "exception": {
+    "values": [
+      {
+        "value": "erro1 (Code: 0)",
+        "type": "TestSentry.SomeError",
+        "mechanism": {
+          "type": "NSError",
+          "description": "TestSentry.SomeError.erro1",
+          "data": {},
+          "meta": {
+            "ns_error": {
+              "code": 0,
+              "domain": "TestSentry.SomeError"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "tags": {},
+  "breadcrumbs": [
+    {
+      "message": "Breadcrumb Tracking",
+      "timestamp": "2025-06-08T07:54:38.605Z",
+      "level": "info",
+      "type": "debug",
+      "category": "started"
+    },
+    {
+      "data": {
+        "position": "portrait"
+      },
+      "timestamp": "2025-06-08T07:54:38.609Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "device.orientation"
+    },
+    {
+      "data": {
+        "state": "foreground"
+      },
+      "timestamp": "2025-06-08T07:54:39.152Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "app.lifecycle"
+    },
+    {
+      "data": {
+        "screen": "UIHostingController<ModifiedContent<AnyView, RootModifier>>",
+        "beingPresented": "false",
+        "window_windowLevel": "0.000000",
+        "window_isKeyWindow": "true",
+        "window": "<UIWindow: 0x106160e70; frame = (0 0; 393 852); gestureRecognizers = <NSArray: 0x106f9dd40>; layer = <UIWindowLayer: 0x106f9dec0>>",
+        "is_window_rootViewController": "true"
+      },
+      "timestamp": "2025-06-08T07:54:39.172Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "ui.lifecycle"
+    },
+    {
+      "data": {
+        "state": "background"
+      },
+      "timestamp": "2025-06-08T07:54:41.108Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "app.lifecycle"
+    },
+    {
+      "data": {
+        "state": "foreground"
+      },
+      "timestamp": "2025-06-08T08:25:18.131Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "app.lifecycle"
+    },
+    {
+      "data": {
+        "state": "background"
+      },
+      "timestamp": "2025-06-08T08:25:21.270Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "app.lifecycle"
+    },
+    {
+      "data": {
+        "state": "foreground"
+      },
+      "timestamp": "2025-06-08T08:25:45.309Z",
+      "level": "info",
+      "type": "navigation",
+      "category": "app.lifecycle"
+    }
+  ],
+  "threads": {
+    "values": [
+      {
+        "id": 0,
+        "current": true,
+        "crashed": false,
+        "stacktrace": {
+          "frames": [
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105dd9cd4",
+              "image_addr": "0x0000000105dd4000",
+              "function": "main",
+              "instruction_addr": "0x0000000105dd9ce0",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105dd94fc",
+              "image_addr": "0x0000000105dd4000",
+              "function": "$s10TestSentry0aB3AppV5$mainyyFZ",
+              "instruction_addr": "0x0000000105dd9524",
+              "in_app": true
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a0f0ae1c",
+              "image_addr": "0x00000001a0f02000",
+              "function": "$s7SwiftUI3AppPAAE4mainyyFZ",
+              "instruction_addr": "0x00000001a0f0aed0",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a0f0afac",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a0f0b01c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a12056fc",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a12057a4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f0c08d8",
+              "image_addr": "0x000000019efc0000",
+              "function": "UIApplicationMain",
+              "instruction_addr": "0x000000019f0c0a28",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f0f4f44",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f0f5274",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices",
+              "symbol_addr": "0x00000001e98c13ac",
+              "image_addr": "0x00000001e98c0000",
+              "function": "GSEventRunModal",
+              "instruction_addr": "0x00000001e98c1454",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+              "symbol_addr": "0x000000019c6e2a00",
+              "image_addr": "0x000000019c6d1000",
+              "function": "CFRunLoopRunSpecific",
+              "instruction_addr": "0x000000019c6e2c3c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+              "symbol_addr": "0x000000019c6e0d38",
+              "image_addr": "0x000000019c6d1000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019c6e1080",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+              "symbol_addr": "0x000000019c6e0618",
+              "image_addr": "0x000000019c6d1000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019c6e0700",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+              "symbol_addr": "0x000000019c6e07f8",
+              "image_addr": "0x000000019c6d1000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019c6e08a4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+              "symbol_addr": "0x000000019c6e0a70",
+              "image_addr": "0x000000019c6d1000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019c6e0a8c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc4188",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc41e4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc89e4",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc8ab4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc93b0",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc9404",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc9444",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc94e4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efce918",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efcfbe4",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efd0584",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efd09a0",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f01f390",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f01f508",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f0120a4",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f012c18",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f013048",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f013104",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f01312c",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f01327c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc54e0",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc632c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019efc64b8",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019efc6d40",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f05b690",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f05b808",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f05b690",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f05b808",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f05b690",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f05b808",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f05b690",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f05b808",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019fa2483c",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019fa249fc",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019fa24648",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019fa2473c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+              "symbol_addr": "0x000000019f3f8098",
+              "image_addr": "0x000000019efc0000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000019f3f84c0",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a1923cf8",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a1923dc8",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a191eb48",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a191fe38",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore",
+              "symbol_addr": "0x000000025d9c0cec",
+              "image_addr": "0x000000025d3de000",
+              "function": "$s7SwiftUI6UpdateO13enqueueAction6reason_s6UInt32VAA16CustomEventTraceV0eI4TypeO6ReasonOSg_yyctFZ",
+              "instruction_addr": "0x000000025d9c0dac",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore",
+              "symbol_addr": "0x000000025d3ef4a4",
+              "image_addr": "0x000000025d3de000",
+              "function": "$s7SwiftUI6UpdateO3endyyFZ",
+              "instruction_addr": "0x000000025d3ef578",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore",
+              "symbol_addr": "0x000000025d3efbb8",
+              "image_addr": "0x000000025d3de000",
+              "function": "$s7SwiftUI6UpdateO15dispatchActionsyyFZ",
+              "instruction_addr": "0x000000025d3f00dc",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore",
+              "symbol_addr": "0x000000025d9c1180",
+              "image_addr": "0x000000025d3de000",
+              "function": "<redacted>",
+              "instruction_addr": "0x000000025d9c125c",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a11f857c",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a11f8598",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a153eb90",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a153ebac",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a1770aac",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a1770ac0",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a176b078",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a176b0b8",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a153eb90",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a153ebac",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a13663a0",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a13663f8",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a1e3a940",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a1e3aabc",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a1e66414",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a1e66498",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a17c4278",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a17c4294",
+              "in_app": false
+            },
+            {
+              "package": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+              "symbol_addr": "0x00000001a18b40a0",
+              "image_addr": "0x00000001a0f02000",
+              "function": "<redacted>",
+              "instruction_addr": "0x00000001a18b40c0",
+              "in_app": false
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105dd8738",
+              "image_addr": "0x0000000105dd4000",
+              "function": "",
+              "instruction_addr": "0x0000000105dd8754",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105dd8208",
+              "image_addr": "0x0000000105dd4000",
+              "function": "$s10TestSentry11ContentViewV9sendErroryyF",
+              "instruction_addr": "0x0000000105dd8284",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105e44b38",
+              "image_addr": "0x0000000105dd4000",
+              "function": "+[SentrySDK captureError:]",
+              "instruction_addr": "0x0000000105e44b90",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105e44cb0",
+              "image_addr": "0x0000000105dd4000",
+              "function": "+[SentrySDK captureError:withScope:]",
+              "instruction_addr": "0x0000000105e44d04",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105e19b90",
+              "image_addr": "0x0000000105dd4000",
+              "function": "-[SentryHub captureError:withScope:]",
+              "instruction_addr": "0x0000000105e19c2c",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105deed94",
+              "image_addr": "0x0000000105dd4000",
+              "function": "-[SentryClient captureError:withScope:incrementSessionErrors:]",
+              "instruction_addr": "0x0000000105deedf8",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105df07dc",
+              "image_addr": "0x0000000105dd4000",
+              "function": "-[SentryClient prepareEvent:withScope:alwaysAttachStacktrace:isFatalEvent:]",
+              "instruction_addr": "0x0000000105df0c34",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105dfd194",
+              "image_addr": "0x0000000105dd4000",
+              "function": "-[SentryThreadInspector getCurrentThreads]",
+              "instruction_addr": "0x0000000105dfd3a4",
+              "in_app": true
+            },
+            {
+              "package": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib",
+              "symbol_addr": "0x0000000105e6052c",
+              "image_addr": "0x0000000105dd4000",
+              "function": "-[SentryStacktraceBuilder buildStacktraceForCurrentThread]",
+              "instruction_addr": "0x0000000105e6054c",
+              "in_app": true
+            }
+          ]
+        },
+        "main": true
+      },
+      {
+        "id": 1,
+        "current": false,
+        "crashed": false,
+        "name": "com.apple.uikit.eventfetch-thread",
+        "main": false
+      },
+      {
+        "id": 2,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 3,
+        "current": false,
+        "crashed": false,
+        "name": "io.sentry.app-hang-tracker",
+        "main": false
+      },
+      {
+        "id": 4,
+        "current": false,
+        "crashed": false,
+        "name": "com.apple.NSURLConnectionLoader",
+        "main": false
+      },
+      {
+        "id": 5,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 6,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 7,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 8,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 9,
+        "current": false,
+        "crashed": false,
+        "main": false
+      },
+      {
+        "id": 10,
+        "current": false,
+        "crashed": false,
+        "main": false
+      }
+    ]
+  },
+  "contexts": {
+    "app": {
+      "build_type": "enterprise",
+      "app_version": "1.0",
+      "app_identifier": "com.zunda.TestSentry",
+      "app_start_time": "2025-06-08T07:54:38Z",
+      "app_id": "53E5C3ED-07C2-3676-A721-A6F7A06488B7",
+      "device_app_hash": "e384ce96e6f1f051bb450faa26dddf90ac1cdc83",
+      "app_build": "1",
+      "in_foreground": true,
+      "app_memory": 14647296,
+      "view_names": [
+        "UIHostingController<ModifiedContent<AnyView, RootModifier>>"
+      ],
+      "app_name": "TestSentry"
+    },
+    "os": {
+      "version": "18.5",
+      "rooted": false,
+      "kernel_version": "Darwin Kernel Version 24.5.0: Tue Apr 22 20:38:09 PDT 2025; root:xnu-11417.122.4~1/RELEASE_ARM64_T8140",
+      "name": "iOS",
+      "build": "22F76"
+    },
+    "device": {
+      "processor_count": 6,
+      "model_id": "D47AP",
+      "free_memory": 103923712,
+      "orientation": "portrait",
+      "family": "iOS",
+      "thermal_state": "nominal",
+      "simulator": false,
+      "battery_level": 75,
+      "locale": "en_US",
+      "arch": "arm64",
+      "memory_size": 8063139840,
+      "charging": false,
+      "model": "iPhone17,3",
+      "usable_memory": 6255968256
+    },
+    "trace": {
+      "span_id": "e201485cc15b43d8",
+      "trace_id": "7e85db6fb5104e0aaa746e2fffcf2b13"
+    },
+    "culture": {
+      "locale": "en_US",
+      "timezone": "Asia/Tokyo",
+      "display_name": "English (United States)",
+      "calendar": "Gregorian Calendar",
+      "is_24_hour_format": false
+    }
+  },
+  "sdk": {
+    "version": "8.52.1",
+    "features": [
+      "captureFailedRequests",
+      "experimentalViewRenderer",
+      "dataSwizzling"
+    ],
+    "integrations": [
+      "WatchdogTerminationTracking",
+      "AutoBreadcrumbTracking",
+      "AutoSessionTracking",
+      "NetworkTracking",
+      "Crash"
+    ],
+    "name": "sentry.cocoa",
+    "packages": [
+      {
+        "name": "carthage:getsentry/sentry.cocoa",
+        "version": "8.52.1"
+      }
+    ]
+  },
+  "debug_meta": {
+    "images": [
+      {
+        "debug_id": "B696A8AF-D509-35F3-98EA-90E622ED8F22",
+        "image_addr": "0x0000000105dd4000",
+        "type": "macho",
+        "image_size": 1572864,
+        "code_file": "/private/var/containers/Bundle/Application/7D20BDE2-C2AF-4352-80FC-2DB9189B9E20/TestSentry.app/TestSentry.debug.dylib"
+      },
+      {
+        "image_vmaddr": "0x0000000185478000",
+        "debug_id": "96636F64-106F-30C8-A780-82DCEBB0F443",
+        "image_addr": "0x000000019efc0000",
+        "type": "macho",
+        "image_size": 32775008,
+        "code_file": "/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore"
+      },
+      {
+        "image_vmaddr": "0x00000001873ba000",
+        "debug_id": "165D3305-401E-37C2-8387-C1BFB54CFFDE",
+        "image_addr": "0x00000001a0f02000",
+        "type": "macho",
+        "image_size": 19411776,
+        "code_file": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI"
+      },
+      {
+        "image_vmaddr": "0x0000000182b89000",
+        "debug_id": "7821F73C-378B-3A10-BE90-EF526B7DBA93",
+        "image_addr": "0x000000019c6d1000",
+        "type": "macho",
+        "image_size": 5754880,
+        "code_file": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
+      },
+      {
+        "image_vmaddr": "0x00000001cfd78000",
+        "debug_id": "5BA62C22-6D37-3199-9DFD-0E0F7ABEBFA9",
+        "image_addr": "0x00000001e98c0000",
+        "type": "macho",
+        "image_size": 35968,
+        "code_file": "/System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices"
+      },
+      {
+        "image_vmaddr": "0x0000000243896000",
+        "debug_id": "D4A1E5B0-B937-3690-9566-7EF1AF91CAB8",
+        "image_addr": "0x000000025d3de000",
+        "type": "macho",
+        "image_size": 12061408,
+        "code_file": "/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore"
+      }
+    ]
+  }
+}
